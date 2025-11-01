@@ -1,6 +1,13 @@
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface YearSidebarProps {
   selectedYear: number;
@@ -39,27 +46,23 @@ const YearSidebar = ({ selectedYear, onYearChange, years }: YearSidebarProps) =>
         </ScrollArea>
       </aside>
 
-      {/* Mobile/Tablet Horizontal Scroll */}
-      <div className="lg:hidden bg-card border-b border-border px-4 py-3">
-        <ScrollArea className="w-full">
-          <div className="flex gap-2 pb-2">
-            {years.map((year) => (
-              <Button
-                key={year}
-                variant={selectedYear === year ? "default" : "outline"}
-                size="sm"
-                className={`whitespace-nowrap ${
-                  selectedYear === year 
-                    ? "bg-accent hover:bg-accent/90 text-accent-foreground" 
-                    : ""
-                }`}
-                onClick={() => onYearChange(year)}
-              >
-                NEET {year}
-              </Button>
-            ))}
-          </div>
-        </ScrollArea>
+      {/* Mobile/Tablet Dropdown */}
+      <div className="lg:hidden bg-card border-b border-border px-4 py-4">
+        <div className="flex items-center gap-3">
+          <Search className="w-5 h-5 text-muted-foreground" />
+          <Select value={selectedYear.toString()} onValueChange={(value) => onYearChange(Number(value))}>
+            <SelectTrigger className="w-full bg-background">
+              <SelectValue placeholder="Select Year" />
+            </SelectTrigger>
+            <SelectContent className="bg-popover z-50">
+              {years.map((year) => (
+                <SelectItem key={year} value={year.toString()}>
+                  NEET {year}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       </div>
     </>
   );
