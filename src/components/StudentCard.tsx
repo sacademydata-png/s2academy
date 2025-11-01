@@ -1,4 +1,4 @@
-import { GraduationCap, BookOpen } from "lucide-react";
+import { GraduationCap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Student } from "@/lib/supabase";
 
@@ -27,10 +27,7 @@ const StudentCard = ({ student }: StudentCardProps) => {
           
           <div>
             <h3 className="text-lg md:text-xl font-bold text-primary mb-2 transition-colors duration-200 hover:text-accent">{student.name}</h3>
-            <div className="flex items-center justify-center gap-2 text-muted-foreground">
-              <BookOpen className="w-4 h-4" />
-              <p className="text-sm md:text-base">{student.college}</p>
-            </div>
+            <p className="text-sm md:text-base text-muted-foreground">{student.college}</p>
           </div>
         </div>
       </CardContent>
