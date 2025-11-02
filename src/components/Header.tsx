@@ -26,7 +26,7 @@ const Header = ({ isLoggedIn, onLoginClick, onLogout }: HeaderProps) => {
             shrieshriaeacademy@gmail.com
           </a>
         </div>
-        <a href="https://shas.kanavu.tech/enquiry/">
+        <a href="https://erd.s2academy.in/enquiry/">
           <Button
             variant="default"
             size="sm"
@@ -43,7 +43,7 @@ const Header = ({ isLoggedIn, onLoginClick, onLogout }: HeaderProps) => {
           <div className="flex items-center justify-between gap-4">
             {/* Logo */}
             <div className="flex items-center gap-2">
-              <a href="https://shas.kanavu.tech/">
+              <a href="https://erd.s2academy.in/">
                 <img
                   src={logo}
                   alt="Shrie Shrie Academy"
@@ -54,13 +54,13 @@ const Header = ({ isLoggedIn, onLoginClick, onLogout }: HeaderProps) => {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-6">
-              <a href="https://shas.kanavu.tech/" className="text-foreground hover:text-primary transition-colors">Home</a>
-              <a href="https://shas.kanavu.tech/about-us/" className="text-foreground hover:text-primary transition-colors">About Us</a>
-              <a href="https://shas.kanavu.tech/our-courses/" className="text-foreground hover:text-primary transition-colors">Our Courses</a>
+              <a href="https://erd.s2academy.in/" className="text-foreground hover:text-primary transition-colors">Home</a>
+              <a href="https://erd.s2academy.in/about-us/" className="text-foreground hover:text-primary transition-colors">About Us</a>
+              <a href="https://erd.s2academy.in/our-courses/" className="text-foreground hover:text-primary transition-colors">Our Courses</a>
               <a href="https://s2academy.vercel.app/" className="text-foreground hover:text-primary transition-colors font-medium">Result</a>
-              <a href="https://shas.kanavu.tech/enquiry/" className="text-foreground hover:text-primary transition-colors">Enquiry</a>
-              <a href="https://shas.kanavu.tech/contact/" className="text-foreground hover:text-primary transition-colors">Contact</a>
-              <a href="https://shas.kanavu.tech/blog/" className="text-foreground hover:text-primary transition-colors">Blog</a>
+              <a href="https://erd.s2academy.in/enquiry/" className="text-foreground hover:text-primary transition-colors">Enquiry</a>
+              <a href="https://erd.s2academy.in/contact/" className="text-foreground hover:text-primary transition-colors">Contact</a>
+              <a href="https://erd.s2academy.in/blog/" className="text-foreground hover:text-primary transition-colors">Blog</a>
             </nav>
 
             {/* Desktop Actions */}
@@ -111,13 +111,13 @@ const Header = ({ isLoggedIn, onLoginClick, onLogout }: HeaderProps) => {
           {/* Mobile Menu */}
           {mobileMenuOpen && (
             <nav className="lg:hidden mt-4 pb-4 flex flex-col gap-3 border-t border-border pt-4">
-              <a href="https://shas.kanavu.tech/" className="text-foreground hover:text-primary transition-colors py-2">Home</a>
-              <a href="https://shas.kanavu.tech/about-us/" className="text-foreground hover:text-primary transition-colors py-2">About Us</a>
-              <a href="https://shas.kanavu.tech/our-courses/" className="text-foreground hover:text-primary transition-colors py-2">Our Courses</a>
+              <a href="https://erd.s2academy.in/" className="text-foreground hover:text-primary transition-colors py-2">Home</a>
+              <a href="https://erd.s2academy.in/about-us/" className="text-foreground hover:text-primary transition-colors py-2">About Us</a>
+              <a href="https://erd.s2academy.in/our-courses/" className="text-foreground hover:text-primary transition-colors py-2">Our Courses</a>
               <a href="https://s2academy.vercel.app/" className="text-foreground hover:text-primary transition-colors font-medium py-2">Result</a>
-              <a href="https://shas.kanavu.tech/enquiry/" className="text-foreground hover:text-primary transition-colors py-2">Enquiry</a>
-              <a href="https://shas.kanavu.tech/contact/" className="text-foreground hover:text-primary transition-colors py-2">Contact</a>
-              <a href="https://shas.kanavu.tech/blog/" className="text-foreground hover:text-primary transition-colors py-2">Blog</a>
+              <a href="https://erd.s2academy.in/enquiry/" className="text-foreground hover:text-primary transition-colors py-2">Enquiry</a>
+              <a href="https://erd.s2academy.in/contact/" className="text-foreground hover:text-primary transition-colors py-2">Contact</a>
+              <a href="https://erd.s2academy.in/blog/" className="text-foreground hover:text-primary transition-colors py-2">Blog</a>
 
               <div className="relative mt-2">
                 <Input
