@@ -15,32 +15,52 @@ const Header = ({ isLoggedIn, onLoginClick, onLogout }: HeaderProps) => {
 
   return (
     <>
+      {/* Top Bar */}
       <div className="bg-primary text-primary-foreground py-2 px-4 md:px-6 flex items-center justify-between">
         <div className="flex items-center gap-2 text-xs md:text-sm">
           <Mail className="w-3 h-3 md:w-4 md:h-4" />
-          <span className="truncate">shrieshriaeacademy@gmail.com</span>
+          <a
+            href="mailto:shrieshriaeacademy@gmail.com"
+            className="truncate hover:underline"
+          >
+            shrieshriaeacademy@gmail.com
+          </a>
         </div>
-        <Button variant="default" size="sm" className="bg-accent hover:bg-accent/90 text-accent-foreground text-xs md:text-sm">
-          ENQUIRY
-        </Button>
+        <a href="https://shas.kanavu.tech/enquiry/">
+          <Button
+            variant="default"
+            size="sm"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground text-xs md:text-sm"
+          >
+            ENQUIRY
+          </Button>
+        </a>
       </div>
-      
+
+      {/* Main Header */}
       <header className="bg-card border-b border-border sticky top-0 z-50">
         <div className="container mx-auto px-4 py-3 md:py-4">
           <div className="flex items-center justify-between gap-4">
+            {/* Logo */}
             <div className="flex items-center gap-2">
-              <img src={logo} alt="Shrie Shrie Academy" className="h-12 md:h-16 w-auto" />
+              <a href="https://shas.kanavu.tech/">
+                <img
+                  src={logo}
+                  alt="Shrie Shrie Academy"
+                  className="h-12 md:h-16 w-auto"
+                />
+              </a>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-6">
-              <a href="#" className="text-foreground hover:text-primary transition-colors">Home</a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors">About Us</a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors">Our Courses</a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors font-medium">Result</a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors">Enquiry</a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors">Contact</a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors">Blog</a>
+              <a href="https://shas.kanavu.tech/" className="text-foreground hover:text-primary transition-colors">Home</a>
+              <a href="https://shas.kanavu.tech/about-us/" className="text-foreground hover:text-primary transition-colors">About Us</a>
+              <a href="https://shas.kanavu.tech/our-courses/" className="text-foreground hover:text-primary transition-colors">Our Courses</a>
+              <a href="https://s2academy.vercel.app/" className="text-foreground hover:text-primary transition-colors font-medium">Result</a>
+              <a href="https://shas.kanavu.tech/enquiry/" className="text-foreground hover:text-primary transition-colors">Enquiry</a>
+              <a href="https://shas.kanavu.tech/contact/" className="text-foreground hover:text-primary transition-colors">Contact</a>
+              <a href="https://shas.kanavu.tech/blog/" className="text-foreground hover:text-primary transition-colors">Blog</a>
             </nav>
 
             {/* Desktop Actions */}
@@ -91,13 +111,14 @@ const Header = ({ isLoggedIn, onLoginClick, onLogout }: HeaderProps) => {
           {/* Mobile Menu */}
           {mobileMenuOpen && (
             <nav className="lg:hidden mt-4 pb-4 flex flex-col gap-3 border-t border-border pt-4">
-              <a href="#" className="text-foreground hover:text-primary transition-colors py-2">Home</a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors py-2">About Us</a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors py-2">Our Courses</a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors font-medium py-2">Result</a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors py-2">Enquiry</a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors py-2">Contact</a>
-              <a href="#" className="text-foreground hover:text-primary transition-colors py-2">Blog</a>
+              <a href="https://shas.kanavu.tech/" className="text-foreground hover:text-primary transition-colors py-2">Home</a>
+              <a href="https://shas.kanavu.tech/about-us/" className="text-foreground hover:text-primary transition-colors py-2">About Us</a>
+              <a href="https://shas.kanavu.tech/our-courses/" className="text-foreground hover:text-primary transition-colors py-2">Our Courses</a>
+              <a href="https://s2academy.vercel.app/" className="text-foreground hover:text-primary transition-colors font-medium py-2">Result</a>
+              <a href="https://shas.kanavu.tech/enquiry/" className="text-foreground hover:text-primary transition-colors py-2">Enquiry</a>
+              <a href="https://shas.kanavu.tech/contact/" className="text-foreground hover:text-primary transition-colors py-2">Contact</a>
+              <a href="https://shas.kanavu.tech/blog/" className="text-foreground hover:text-primary transition-colors py-2">Blog</a>
+
               <div className="relative mt-2">
                 <Input
                   type="search"
