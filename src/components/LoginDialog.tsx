@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 import {
   Dialog,
   DialogContent,
@@ -15,32 +16,33 @@ interface LoginDialogProps {
   onOpenChange: (open: boolean) => void;
   onLogin: () => void;
 }
-
-const ADMIN_EMAIL = "kvsnavee@gmail.com";
-const ADMIN_PASSWORD = "s2academy";
-
 const LoginDialog = ({ open, onOpenChange, onLogin }: LoginDialogProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (!error) {
       onLogin();
       onOpenChange(false);
       setEmail("");
       setPassword("");
       toast({
         title: "Login successful",
-        description: "Welcome back, admin!",
+        description: "Welcome back!",
       });
     } else {
       toast({
         variant: "destructive",
         title: "Login failed",
-        description: "Invalid email or password",
+        description: error.message,
       });
     }
   };

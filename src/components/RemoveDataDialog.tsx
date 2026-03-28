@@ -17,9 +17,10 @@ interface RemoveDataDialogProps {
   onOpenChange: (open: boolean) => void;
   onSuccess: () => void;
   years: number[];
+  examType: 'neet' | 'jee';
 }
 
-const RemoveDataDialog = ({ open, onOpenChange, onSuccess, years }: RemoveDataDialogProps) => {
+const RemoveDataDialog = ({ open, onOpenChange, onSuccess, years, examType }: RemoveDataDialogProps) => {
   const [name, setName] = useState("");
   const [college, setCollege] = useState("");
   const [year, setYear] = useState("");
@@ -31,8 +32,9 @@ const RemoveDataDialog = ({ open, onOpenChange, onSuccess, years }: RemoveDataDi
     setLoading(true);
 
     try {
+      const tableName = examType === 'neet' ? 'students' : 'jee_students';
       const { data, error } = await supabase
-        .from('students')
+        .from(tableName)
         .delete()
         .match({
           name,
@@ -99,7 +101,7 @@ const RemoveDataDialog = ({ open, onOpenChange, onSuccess, years }: RemoveDataDi
               <SelectContent>
                 {years.map((y) => (
                   <SelectItem key={y} value={y.toString()}>
-                    NEET {y}
+                    {examType.toUpperCase()} {y}
                   </SelectItem>
                 ))}
               </SelectContent>

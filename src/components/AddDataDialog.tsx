@@ -17,9 +17,12 @@ interface AddDataDialogProps {
   onOpenChange: (open: boolean) => void;
   onSuccess: () => void;
   years: number[];
+  examType: 'neet' | 'jee';
 }
 
-const AddDataDialog = ({ open, onOpenChange, onSuccess, years }: AddDataDialogProps) => {
+const MAX_IMAGE_SIZE = 2 * 1024 * 1024; // 2MB
+
+const AddDataDialog = ({ open, onOpenChange, onSuccess, years, examType }: AddDataDialogProps) => {
   const [name, setName] = useState("");
   const [college, setCollege] = useState("");
   const [year, setYear] = useState("");
@@ -36,6 +39,9 @@ const AddDataDialog = ({ open, onOpenChange, onSuccess, years }: AddDataDialogPr
 
       // Upload image if provided
       if (imageFile) {
+        if (imageFile.size > MAX_IMAGE_SIZE) {
+          throw new Error("Image size must be less than 2MB");
+        }
         const fileExt = imageFile.name.split('.').pop();
         const fileName = `${Math.random()}.${fileExt}`;
         const { error: uploadError, data } = await supabase.storage
@@ -54,8 +60,9 @@ const AddDataDialog = ({ open, onOpenChange, onSuccess, years }: AddDataDialogPr
       }
 
       // Insert student record
+      const tableName = examType === 'neet' ? 'students' : 'jee_students';
       const { error } = await supabase
-        .from('students')
+        .from(tableName)
         .insert([
           {
             name,
@@ -125,7 +132,7 @@ const AddDataDialog = ({ open, onOpenChange, onSuccess, years }: AddDataDialogPr
               <SelectContent>
                 {years.map((y) => (
                   <SelectItem key={y} value={y.toString()}>
-                    NEET {y}
+                    {examType.toUpperCase()} {y}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -137,8 +144,26 @@ const AddDataDialog = ({ open, onOpenChange, onSuccess, years }: AddDataDialogPr
               id="image"
               type="file"
               accept="image/*"
-              onChange={(e) => setImageFile(e.target.files?.[0] || null)}
+              onChange={(e) => {
+                const file = e.target.files?.[0] || null;
+                if (file && file.size > MAX_IMAGE_SIZE) {
+                  toast({
+                    variant: "destructive",
+                    title: "File too large",
+                    description: "Image must be less than 2MB. Please choose a smaller file.",
+                  });
+                  e.target.value = "";
+                  setImageFile(null);
+                } else {
+                  setImageFile(file);
+                }
+              }}
             />
+            {imageFile && (
+              <p className="text-xs text-muted-foreground">
+                {(imageFile.size / 1024 / 1024).toFixed(2)} MB / 2 MB max
+              </p>
+            )}
           </div>
           <Button type="submit" className="w-full" disabled={loading}>
             {loading ? "Adding..." : "Add Student"}
